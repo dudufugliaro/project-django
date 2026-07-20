@@ -11,6 +11,15 @@ class Categoria(models.Model):                                  # ← novo model
 
     def __str__(self):
         return self.nome
+    
+class Tag(models.Model):                                       
+    nome = models.SlugField(max_length=30, unique=True)
+
+    class Meta:
+        ordering = ["nome"]
+
+    def __str__(self):
+        return self.nome
 
 
 class Mensagem(models.Model):
@@ -25,6 +34,12 @@ class Mensagem(models.Model):
         blank=True,
         related_name="mensagens",
     )
+    tags = models.ManyToManyField(                           
+        Tag,
+        blank=True,
+        related_name="mensagens",
+    )
+
     class Meta:
         ordering = ["-criada_em"]
 
