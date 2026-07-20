@@ -18,7 +18,13 @@ class Mensagem(models.Model):
     conteudo = models.TextField()
     criada_em = models.DateTimeField(auto_now_add=True)
     autor = models.CharField(max_length=80, default="Anônimo")   
-
+    categoria = models.ForeignKey(                              
+        Categoria,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="mensagens",
+    )
     class Meta:
         ordering = ["-criada_em"]
 
