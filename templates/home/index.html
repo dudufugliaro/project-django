@@ -59,6 +59,12 @@
             </p>
 
             {% if mensagens %}
+                <li class="border-l-2 border-emerald-400 pl-4 py-1">
+                    <h3 class="font-semibold">{{ m.titulo }}</h3>
+                    <p class="text-sm text-slate-300">{{ m.conteudo }}</p>
+                    <span class="text-xs text-slate-400">por {{ m.autor }}</span>   {# ← novo #}
+                    <span class="text-xs text-slate-500">{{ m.criada_em|date:"d/m/Y H:i" }}</span>
+                </li>
                 <ul class="space-y-3">
                     {% for m in mensagens %}
                         <li class="border-l-2 border-emerald-400 pl-4 py-1">
@@ -73,6 +79,7 @@
                     <p class="mb-2">Nenhuma mensagem ainda.</p>
                     <p class="text-sm">Crie uma no <a href="/admin/" class="text-indigo-300 underline">admin</a> para vê-la aqui.</p>
                 </div>
+                
             {% endif %}
         </section>
     </main>
